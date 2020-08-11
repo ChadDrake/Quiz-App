@@ -6,3 +6,19 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-instance {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: border;
+  border-color: black;
+  border-style: solid;
+}

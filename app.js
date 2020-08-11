@@ -27,3 +27,20 @@
   /********** EVENT HANDLER FUNCTIONS **********/
   
   // These functions handle events (submit, click, etc)
+
+  /*
+on first render, load start page
+on click start, load question 1,
+initialize for loop to keep track of page
+on click submit, take input 
+put input value in array
+increase i by 1
+go to page with index = i
+when i = 4
+on click submit, take input 
+put input value in array
+take arr, parse into other arrays based on values (for loop?)
+see which array.length is longest
+load result page based on which array.length was longest
+on click start over, goes to start page
+  */

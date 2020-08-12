@@ -1,3 +1,4 @@
+'use strict';
 const STORE = [
     {
         question: 'Wall Maria was just breached and you spy a lone titan stumbling down your street. What do you do?',
@@ -38,5 +39,5 @@ const STORE = [
 
     },
     //index 5
-    results = ['a'],
-]
+     ['a'],
+];

@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Example store structure
  */
@@ -47,7 +48,7 @@ on click start over, goes to start page
   */
  
  function countIndex() {
-   let count = results.length;
+   let count = STORE[5].length;
    return count;
  };
 
@@ -67,20 +68,20 @@ function handlePageTurn() {
 
 
 function handleSubmit() {
-   // $('main').on('submit', '#answers-form', function (e) {
-   //    e.preventDefault();
-   //    console.log($("input[name=answer]:checked").val());
-   //    // console.log(STORE[])
-   // });
-};
+  $('main').on('click', '#submit', function (e) {
+    e.preventDefault();
+    STORE[5].push(($("input[name=answer]:checked").val()));
+ });
+}
 
-$('main').on('click', '#submit', function (e) {
-   e.preventDefault();
-   console.log($("input[name=answer]:checked").val());
-   // console.log(STORE[])
-});
+// $('main').on('click', '#submit', function (e) {
+//    e.preventDefault();
+//    console.log($("input[name=answer]:checked").val());
+//    // console.log(STORE[])
+// });
 
   function generateNextQuestion() {
+    if (countIndex() <= 5) {
      $('main').html(`<div class='page-instance'>
      <div class='question-index'>${countIndex()}/5</div>
      <div class="question-text">${STORE[countIndex() - 1].question}</div>
@@ -97,8 +98,23 @@ $('main').on('click', '#submit', function (e) {
          <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
        </form>
      </div>
-   </div>`)
-  };
+   </div>`);
+    } else {
+      $('main').html(`<div class='page-instance'>
+      <div class='results'>
+        <h2>Congrats! You're most similar to ____</h2>
+        <div class="character">
+          <p>Character description text</p>
+        </div>
+        <div class="reset-state">
+          <button id="reset-btn" class="reset-btn btn">Start over!</button>
+        </div>
+
+      </div>
+    
+  </div>`);
+    }
+  }
 
   function main(){
       generateStart();
@@ -109,3 +125,39 @@ $('main').on('click', '#submit', function (e) {
 
 
   $(main);
+
+function getResult(resultArr) {
+  let erin = [];
+  let misaka = [];
+  let titan = [];
+  let levi = [];
+  let final ={
+    erinFinal:0,
+    misakaFinal:0,
+    leviFinal: 0,
+    titanFinal:0,
+  };
+  for (let i = 1; i < resultArr.length; i++) {
+    if(resultArr[i] === 'e') {
+      erin.push(resultArr[i]);
+    } else if (resultArr[i] === 'm') {
+      misaka.push(resultArr[i]);
+    } else if (resultArr[i] === 't') {
+      titan.push(resultArr[i]);
+    } else if (resultArr[i] === 'l') {
+      levi.push(resultArr[i]);
+    }
+  } 
+   final.erinFinal =erin.length;
+   final.misakaFinal = misaka.length;
+   final.titanFinal = titan.length;
+   final.leviFinal = levi.length;
+
+   let person;
+   for (person in final) {
+    if (final[person] >= final.erinFinal  && final[person] >= final.misakaFinal && final[person] >= final.titanFinal && final[person] >= final.leviFinal) {
+      return (person);
+     }
+   }
+  }
+let finalResult = (getResult(STORE[5]));

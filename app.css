@@ -13,7 +13,7 @@ header {
   justify-content: center;
 }
 
-.page-instance {
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;

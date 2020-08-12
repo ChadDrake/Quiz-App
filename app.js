@@ -16,20 +16,20 @@
    * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
    * 
    */
-  
-  /********** TEMPLATE GENERATION FUNCTIONS **********/
-  
-  // These functions return HTML templates
-  
-  /********** RENDER FUNCTION(S) **********/
-  
-  // This function conditionally replaces the contents of the <main> tag based on the state of the store
-  
-  /********** EVENT HANDLER FUNCTIONS **********/
-  
-  // These functions handle events (submit, click, etc)
 
-  /*
+/********** TEMPLATE GENERATION FUNCTIONS **********/
+
+// These functions return HTML templates
+
+/********** RENDER FUNCTION(S) **********/
+
+// This function conditionally replaces the contents of the <main> tag based on the state of the store
+
+/********** EVENT HANDLER FUNCTIONS **********/
+
+// These functions handle events (submit, click, etc)
+
+/*
 on first render, load start page
 on click start, load question 1,
 initialize for loop to keep track of page number and return to display at question-index
@@ -46,132 +46,45 @@ load result page based on which array.length was longest
 on click start over, goes to start page
 
   */
- 
- function countIndex() {
-   let count = STORE[5].length;
-   return count;
- };
 
-  function generateStart() {
-     $('main').html( `<div class='page'>
+function countIndex() {
+  let count = STORE[5].length;
+  return count;
+}
+
+function generateStart() {
+  $('main').html(`<div class='page'>
      <button id="start" class='btn'>Start Quiz</button>
-   </div>`)
-  };
+   </div>`);
+};
 
 function handlePageTurn() {
-   // e.preventDefault();
-   $('main').on('click', '.btn', function (event)  {
-     generateNextQuestion();
+
+  $('main').on('click', '.btn', function (event) {
+    generateNextQuestion();
   });
 };
 
-
-
-// function handleSubmit() {
-//   $('main').on('click', '#submit', function (e) {
-//     e.preventDefault();
-//     console.log(($("input[name=answer]:checked").val()));
-//  });
-// }
-
-$('main').on('click', '#submit', function (e) {
-   e.preventDefault();
-   STORE[5].push($("input[name=answer]:checked").val());
-   // console.log(STORE[])
+$('main').on('click', '.reset-btn', function (event) {
+  STORE[5] = ['a'];
+  generateStart();
 });
 
-//   function generateNextQuestion() {
-//     if (countIndex() <= 5) {
-//      $('main').html(`<div class='page-instance'>
-//      <div class='question-index'>${countIndex()}/5</div>
-//      <div class="question-text">${STORE[countIndex() - 1].question}</div>
-//      <div class="answers">
-//        <form id='answers-form' class='form'> 
-//          <input type='radio' id='erin' name='answer' value='e'>
-//          <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
-//          <input type="radio" id="misaka" name="answer" value="m">
-//          <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>
-//          <input type="radio" id="titan" name="answer" value="t">
-//          <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
-//          <input type="radio" id="levi" name="answer" value="l">
-//          <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
-//          <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
-//        </form>
-//      </div>
-//    </div>`);
-//     } else {
-//       console.log(STORE[5])
-//       console.log(finalResult)
-//         if (finalResult === 'erinFinal') {
-//       $('main').html(`<div class='page-instance'>
-//       <div class='results'>
-//         <h2>Congrats! You're most similar to Erin!</h2>
-//         <div class="character">
-//           <p>Character description text</p>
-//         </div>
-//         <div class="reset-state">
-//           <button id="reset-btn" class="reset-btn btn">Start over!</button>
-//         </div>
-
-//       </div>
-    
-//   </div>`);
-//        } else if (finalResult === 'misakaFinal') {
-//         $('main').html(`<div class='page-instance'>
-//         <div class='results'>
-//           <h2>Congrats! You're most similar to Misaka</h2>
-//           <div class="character">
-//             <p>Character description text</p>
-//           </div>
-//           <div class="reset-state">
-//             <button id="reset-btn" class="reset-btn btn">Start over!</button>
-//           </div>
-  
-//         </div>
-      
-//     </div>`);
-//     }else if (finalResult === 'titanFinal') {
-//       $('main').html(`<div class='page-instance'>
-//       <div class='results'>
-//         <h2>Congrats! You're most similar to a Titan! :O</h2>
-//         <div class="character">
-//           <p>Character description text</p>
-//         </div>
-//         <div class="reset-state">
-//           <button id="reset-btn" class="reset-btn btn">Start over!</button>
-//         </div>
-
-//       </div>
-    
-//   </div>`);
-//     }
-//     else {
-//     $('main').html(`<div class='page-instance'>
-//     <div class='results'>
-//       <h2>Congrats! You're most similar to Levi</h2>
-//       <div class="character">
-//         <p>Character description text</p>
-//       </div>
-//       <div class="reset-state">
-//         <button id="reset-btn" class="reset-btn btn">Start over!</button>
-//       </div>
-
-//     </div>
-  
-// </div>`);
-//   }
-//     }
-//   }
-  
 
 
 
 
-let final ={
-    erinFinal:0,
-    misakaFinal:0,
-    leviFinal: 0,
-    titanFinal:0,
+$('main').on('click', '#submit', function (e) {
+  e.preventDefault();
+  STORE[5].push($('input[name=answer]:checked').val());
+
+});
+
+let final = {
+  erinFinal: 0,
+  misakaFinal: 0,
+  leviFinal: 0,
+  titanFinal: 0,
 }
 
 //
@@ -181,7 +94,7 @@ function getResult(resultArr) {
   let titan = [];
   let levi = [];
   for (let i = 1; i < resultArr.length; i++) {
-    if(resultArr[i] === 'e') {
+    if (resultArr[i] === 'e') {
       erin.push(resultArr[i]);
     } else if (resultArr[i] === 'm') {
       misaka.push(resultArr[i]);
@@ -190,22 +103,20 @@ function getResult(resultArr) {
     } else if (resultArr[i] === 'l') {
       levi.push(resultArr[i]);
     }
-  } 
-   final.erinFinal = erin.length;
-   final.misakaFinal = misaka.length;
-   final.titanFinal = titan.length;
-   final.leviFinal = levi.length;
-    // console.log(final.finalTitan)
-    // console.log()
-   let person;
-   let endGoal;
-   for (person in final) {
-    if (final[person] >= final.erinFinal  && final[person] >= final.misakaFinal && final[person] >= final.titanFinal && final[person] >= final.leviFinal) {
+  }
+  final.erinFinal = erin.length;
+  final.misakaFinal = misaka.length;
+  final.titanFinal = titan.length;
+  final.leviFinal = levi.length;
+  let person;
+  let endGoal;
+  for (person in final) {
+    if (final[person] >= final.erinFinal && final[person] >= final.misakaFinal && final[person] >= final.titanFinal && final[person] >= final.leviFinal) {
       endGoal = person;
-     }
-   }
-   console.log(endGoal)
-   return endGoal;
+    }
+  }
+  console.log(endGoal);
+  return endGoal;
 };
 
 function getFinalResult() {
@@ -215,7 +126,7 @@ function getFinalResult() {
 
 function generateNextQuestion() {
   if (countIndex() <= 5) {
-   $('main').html(`<div class='page-instance'>
+    $('main').html(`<div class='page-instance'>
    <div class='question-index'>${countIndex()}/5</div>
    <div class="question-text">${STORE[countIndex() - 1].question}</div>
    <div class="answers">
@@ -235,8 +146,8 @@ function generateNextQuestion() {
   } else {
     console.log(STORE[5])
     console.log(getFinalResult())
-      if (getFinalResult() === 'erinFinal') {
-    $('main').html(`<div class='page-instance'>
+    if (getFinalResult() === 'erinFinal') {
+      $('main').html(`<div class='page-instance'>
     <div class='results'>
       <h2>Congrats! You're most similar to Eren!</h2>
       <div class="character">
@@ -249,7 +160,7 @@ function generateNextQuestion() {
     </div>
   
 </div>`);
-     } else if (getFinalResult() === 'misakaFinal') {
+    } else if (getFinalResult() === 'misakaFinal') {
       $('main').html(`<div class='page-instance'>
       <div class='results'>
         <h2>Hey! You're most similar to Mikasa!!</h2>
@@ -263,8 +174,8 @@ function generateNextQuestion() {
       </div>
     
   </div>`);
-  }else if (getFinalResult() === 'titanFinal') {
-    $('main').html(`<div class='page-instance'>
+    } else if (getFinalResult() === 'titanFinal') {
+      $('main').html(`<div class='page-instance'>
     <div class='results'>
       <h2>Well, it looks like you're most similar to a Titan...</h2>
       <div class="character">
@@ -277,9 +188,9 @@ function generateNextQuestion() {
     </div>
   
 </div>`);
-  }
-  else {
-  $('main').html(`<div class='page-instance'>
+    }
+    else {
+      $('main').html(`<div class='page-instance'>
   <div class='results'>
     <h2>Congrats! You're most similar to Levi</h2>
     <div class="character">
@@ -292,15 +203,15 @@ function generateNextQuestion() {
   </div>
 
 </div>`);
-}
+    }
   }
 }
 
-function main(){
+function main() {
   generateStart();
   handlePageTurn();
-  // handleSubmit();
-};
+
+}
 
 $(main);
 

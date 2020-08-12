@@ -14,10 +14,10 @@ body {
 }
 
 main {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   display: border;
   border-color: black;
   border-style: solid;
@@ -27,12 +27,65 @@ main {
   margin-right: 20%;
   padding: 10px;
   box-shadow: 0 0 10px 2px;
+
+}
+
+.page-instance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.page {
+  align-items: center;
+  justify-content: center;
+  margin-left: 25%;
+  margin-bottom: 8px;
 }
 
 .btn {
-  justify-content: center;
+  margin-top: 9px;
+  /* margin-left: 25%; */
+  /* justify-content: center; */
+  /* align-items: center; */
   border-style: solid;
   border-radius: 5px;
   border-width: 3px;
 }
+
+.submit-btn  {
+  margin-left: 25%;
+}
+.btn:hover {
+  color: white;
+  background-color: teal;
+}
+
+.start {
+  margin-top: 9px;
+  margin-left: 25%;
+  /* justify-content: center; */
+  justify-content: center;
+  flex-direction: row;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 3px;
+
+}
+
+.start:hover{
+  color: white;
+  background-color: teal;
+}
+
+/* .question-index {
+  padding-bottom: 10px;
+  margin-left: 50%
+} */
+
+
+
 

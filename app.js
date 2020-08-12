@@ -54,16 +54,19 @@ function countIndex() {
 
 function generateStart() {
   $('main').html(`<div class='page'>
-     <button id="start" class='btn'>Start Quiz</button>
+     <button id="start" class='start'>Start Quiz</button>
    </div>`);
 };
 
 function handlePageTurn() {
-
-  $('main').on('click', '.btn', function (event) {
+  $('main').on('click', '.start', function (event) {
     generateNextQuestion();
   });
-};
+}
+  $('main').on('submit', '.btn', function (event) {
+    generateNextQuestion();
+  });
+
 
 $('main').on('click', '.reset-btn', function (event) {
   STORE[5] = ['a'];
@@ -130,7 +133,7 @@ function generateNextQuestion() {
    <div class='question-index'>${countIndex()}/5</div>
    <div class="question-text">${STORE[countIndex() - 1].question}</div>
    <div class="answers">
-     <form id='answers-form' class='form'> 
+     <form id='answers-form' class='form' required> 
        <input type='radio' id='erin' name='answer' value='e'>
        <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
        <input type="radio" id="misaka" name="answer" value="m">

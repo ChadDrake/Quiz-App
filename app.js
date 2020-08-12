@@ -64,20 +64,28 @@ function handlePageTurn() {
   });
 }
 
+function handleSubmit() {
+   $('main').on('click', 'submit', function (e) {
+      e.preventDefault();
+      console.log($("input[name='answer']:checked").val());
+      // console.log(STORE[])
+   })
+}
+
   function generateNextQuestion() {
      $('main').html(`<div class='page-instance'>
      <div class='question-index'>${countIndex()}/5</div>
-     <div class="question-text">  </div>
+     <div class="question-text">${STORE[countIndex() - 1].question}</div>
      <div class="answers">
        <form id='answers-form'> 
          <input type='radio' id='erin' name='answer' value='e'>
-         <label for="erin">Run and get Misaka</label><br>
+         <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
          <input type="radio" id="misaka" name="answer" value="m">
-         <label for="misaka">Herd the civilians to safety</label><br>
+         <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>
          <input type="radio" id="titan" name="answer" value="t">
-         <label for="titan">I am the titan</label><br>
+         <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
          <input type="radio" id="levi" name="answer" value="l">
-         <label for="levi">Charge the titan horde</label><br>
+         <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
          <button id="submit" class='submit-btn btn'>Submit</button>
        </form>
      </div>
@@ -87,6 +95,7 @@ function handlePageTurn() {
   function main(){
       generateStart();
       handlePageTurn();
+      handleSubmit();
   }
 
 

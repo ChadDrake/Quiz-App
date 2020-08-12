@@ -49,35 +49,43 @@ on click start over, goes to start page
  function countIndex() {
    let count = results.length;
    return count;
- }
+ };
 
   function generateStart() {
      $('main').html( `<div class='page'>
      <button id="submit" class='btn'>Start Quiz</button>
    </div>`)
-  }
+  };
 
 function handlePageTurn() {
    // e.preventDefault();
    $('main').on('click', '.btn', function (event)  {
      generateNextQuestion();
   });
-}
+};
+
+
 
 function handleSubmit() {
-   $('main').on('click', 'submit', function (e) {
-      e.preventDefault();
-      console.log($("input[name='answer']:checked").val());
-      // console.log(STORE[])
-   })
-}
+   // $('main').on('submit', '#answers-form', function (e) {
+   //    e.preventDefault();
+   //    console.log($("input[name=answer]:checked").val());
+   //    // console.log(STORE[])
+   // });
+};
+
+$('main').on('click', '#submit', function (e) {
+   e.preventDefault();
+   console.log($("input[name=answer]:checked").val());
+   // console.log(STORE[])
+});
 
   function generateNextQuestion() {
      $('main').html(`<div class='page-instance'>
      <div class='question-index'>${countIndex()}/5</div>
      <div class="question-text">${STORE[countIndex() - 1].question}</div>
      <div class="answers">
-       <form id='answers-form'> 
+       <form id='answers-form' class='form'> 
          <input type='radio' id='erin' name='answer' value='e'>
          <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
          <input type="radio" id="misaka" name="answer" value="m">
@@ -86,18 +94,18 @@ function handleSubmit() {
          <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
          <input type="radio" id="levi" name="answer" value="l">
          <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
-         <button id="submit" class='submit-btn btn'>Submit</button>
+         <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
        </form>
      </div>
    </div>`)
-  }
+  };
 
   function main(){
       generateStart();
       handlePageTurn();
       handleSubmit();
-  }
+  };
 
 
 
-  $(main());
+  $(main);

@@ -56,24 +56,26 @@ function generateStart() {
   $('main').html(`<div class='page'>
      <button id="start" class='start'>Start Quiz</button>
    </div>`);
-};
+}
 
 function handlePageTurn() {
   $('main').on('click', '.start', function (event) {
     generateNextQuestion();
   });
-}
-
+ 
+} 
 $('main').on('click', '.reset-btn', function (event) {
   STORE[5] = ['a'];
   generateStart();
 });
 
+// $('main').on('submit', '#submit', function (e) {
+//   e.preventDefault();
+//   generateNextQuestion();
+// }); 
 
 
-
-
-$('main').on('click', '#submit', function (e) {
+$('main').on('submit', function (e) {
   e.preventDefault();
   STORE[5].push($('input[name=answer]:checked').val());
   generateNextQuestion();
@@ -85,9 +87,9 @@ let final = {
   misakaFinal: 0,
   leviFinal: 0,
   titanFinal: 0,
-}
+};
 
-//
+
 function getResult(resultArr) {
   let erin = [];
   let misaka = [];
@@ -115,9 +117,8 @@ function getResult(resultArr) {
       endGoal = person;
     }
   }
-  console.log(endGoal);
   return endGoal;
-};
+}
 
 function getFinalResult() {
   let finalResult = (getResult(STORE[5]));
@@ -144,7 +145,7 @@ function generateNextQuestion() {
    </div>
  </div>`);
   } else {
-    console.log(STORE[5])
+    console.log(STORE[5]);
     console.log(getFinalResult())
     if (getFinalResult() === 'erinFinal') {
       $('main').html(`<div class='page-instance'>

@@ -1,16 +1,16 @@
-/* Your styles should be mobile-first and responsive */
-
-/** 
-  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
-  *
-  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
-  *
-*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded;
+}
 
 header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+body {
+  background-color: antiquewhite;
 }
 
 main {
@@ -21,4 +21,18 @@ main {
   display: border;
   border-color: black;
   border-style: solid;
+  background-color: rgb(97, 155, 70);
+  border-radius: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
 }
+
+.btn {
+  justify-content: center;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 3px;
+}
+

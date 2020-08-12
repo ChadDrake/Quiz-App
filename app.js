@@ -63,10 +63,6 @@ function handlePageTurn() {
     generateNextQuestion();
   });
 }
-  $('main').on('submit', '.btn', function (event) {
-    generateNextQuestion();
-  });
-
 
 $('main').on('click', '.reset-btn', function (event) {
   STORE[5] = ['a'];
@@ -80,6 +76,7 @@ $('main').on('click', '.reset-btn', function (event) {
 $('main').on('click', '#submit', function (e) {
   e.preventDefault();
   STORE[5].push($('input[name=answer]:checked').val());
+  generateNextQuestion();
 
 });
 
@@ -133,8 +130,8 @@ function generateNextQuestion() {
    <div class='question-index'>${countIndex()}/5</div>
    <div class="question-text">${STORE[countIndex() - 1].question}</div>
    <div class="answers">
-     <form id='answers-form' class='form' required> 
-       <input type='radio' id='erin' name='answer' value='e'>
+     <form id='answers-form' class='form'> 
+       <input type='radio' id='erin' name='answer' value='e' required>
        <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
        <input type="radio" id="misaka" name="answer" value="m">
        <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>

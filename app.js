@@ -54,7 +54,7 @@ on click start over, goes to start page
 
   function generateStart() {
      $('main').html( `<div class='page'>
-     <button id="submit" class='btn'>Start Quiz</button>
+     <button id="start" class='btn'>Start Quiz</button>
    </div>`)
   };
 
@@ -67,76 +67,119 @@ function handlePageTurn() {
 
 
 
-function handleSubmit() {
-  $('main').on('click', '#submit', function (e) {
-    e.preventDefault();
-    STORE[5].push(($("input[name=answer]:checked").val()));
- });
+// function handleSubmit() {
+//   $('main').on('click', '#submit', function (e) {
+//     e.preventDefault();
+//     console.log(($("input[name=answer]:checked").val()));
+//  });
+// }
+
+$('main').on('click', '#submit', function (e) {
+   e.preventDefault();
+   STORE[5].push($("input[name=answer]:checked").val());
+   // console.log(STORE[])
+});
+
+//   function generateNextQuestion() {
+//     if (countIndex() <= 5) {
+//      $('main').html(`<div class='page-instance'>
+//      <div class='question-index'>${countIndex()}/5</div>
+//      <div class="question-text">${STORE[countIndex() - 1].question}</div>
+//      <div class="answers">
+//        <form id='answers-form' class='form'> 
+//          <input type='radio' id='erin' name='answer' value='e'>
+//          <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
+//          <input type="radio" id="misaka" name="answer" value="m">
+//          <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>
+//          <input type="radio" id="titan" name="answer" value="t">
+//          <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
+//          <input type="radio" id="levi" name="answer" value="l">
+//          <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
+//          <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
+//        </form>
+//      </div>
+//    </div>`);
+//     } else {
+//       console.log(STORE[5])
+//       console.log(finalResult)
+//         if (finalResult === 'erinFinal') {
+//       $('main').html(`<div class='page-instance'>
+//       <div class='results'>
+//         <h2>Congrats! You're most similar to Erin!</h2>
+//         <div class="character">
+//           <p>Character description text</p>
+//         </div>
+//         <div class="reset-state">
+//           <button id="reset-btn" class="reset-btn btn">Start over!</button>
+//         </div>
+
+//       </div>
+    
+//   </div>`);
+//        } else if (finalResult === 'misakaFinal') {
+//         $('main').html(`<div class='page-instance'>
+//         <div class='results'>
+//           <h2>Congrats! You're most similar to Misaka</h2>
+//           <div class="character">
+//             <p>Character description text</p>
+//           </div>
+//           <div class="reset-state">
+//             <button id="reset-btn" class="reset-btn btn">Start over!</button>
+//           </div>
+  
+//         </div>
+      
+//     </div>`);
+//     }else if (finalResult === 'titanFinal') {
+//       $('main').html(`<div class='page-instance'>
+//       <div class='results'>
+//         <h2>Congrats! You're most similar to a Titan! :O</h2>
+//         <div class="character">
+//           <p>Character description text</p>
+//         </div>
+//         <div class="reset-state">
+//           <button id="reset-btn" class="reset-btn btn">Start over!</button>
+//         </div>
+
+//       </div>
+    
+//   </div>`);
+//     }
+//     else {
+//     $('main').html(`<div class='page-instance'>
+//     <div class='results'>
+//       <h2>Congrats! You're most similar to Levi</h2>
+//       <div class="character">
+//         <p>Character description text</p>
+//       </div>
+//       <div class="reset-state">
+//         <button id="reset-btn" class="reset-btn btn">Start over!</button>
+//       </div>
+
+//     </div>
+  
+// </div>`);
+//   }
+//     }
+//   }
+  
+
+
+
+
+let final ={
+    erinFinal:0,
+    misakaFinal:0,
+    leviFinal: 0,
+    titanFinal:0,
 }
 
-// $('main').on('click', '#submit', function (e) {
-//    e.preventDefault();
-//    console.log($("input[name=answer]:checked").val());
-//    // console.log(STORE[])
-// });
-
-  function generateNextQuestion() {
-    if (countIndex() <= 5) {
-     $('main').html(`<div class='page-instance'>
-     <div class='question-index'>${countIndex()}/5</div>
-     <div class="question-text">${STORE[countIndex() - 1].question}</div>
-     <div class="answers">
-       <form id='answers-form' class='form'> 
-         <input type='radio' id='erin' name='answer' value='e'>
-         <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
-         <input type="radio" id="misaka" name="answer" value="m">
-         <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>
-         <input type="radio" id="titan" name="answer" value="t">
-         <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
-         <input type="radio" id="levi" name="answer" value="l">
-         <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
-         <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
-       </form>
-     </div>
-   </div>`);
-    } else {
-      $('main').html(`<div class='page-instance'>
-      <div class='results'>
-        <h2>Congrats! You're most similar to ____</h2>
-        <div class="character">
-          <p>Character description text</p>
-        </div>
-        <div class="reset-state">
-          <button id="reset-btn" class="reset-btn btn">Start over!</button>
-        </div>
-
-      </div>
-    
-  </div>`);
-    }
-  }
-
-  function main(){
-      generateStart();
-      handlePageTurn();
-      handleSubmit();
-  };
-
-
-
-  $(main);
-
+//
 function getResult(resultArr) {
   let erin = [];
   let misaka = [];
   let titan = [];
   let levi = [];
-  let final ={
-    erinFinal:0,
-    misakaFinal:0,
-    leviFinal: 0,
-    titanFinal:0,
-  };
   for (let i = 1; i < resultArr.length; i++) {
     if(resultArr[i] === 'e') {
       erin.push(resultArr[i]);
@@ -148,16 +191,117 @@ function getResult(resultArr) {
       levi.push(resultArr[i]);
     }
   } 
-   final.erinFinal =erin.length;
+   final.erinFinal = erin.length;
    final.misakaFinal = misaka.length;
    final.titanFinal = titan.length;
    final.leviFinal = levi.length;
-
+    // console.log(final.finalTitan)
+    // console.log()
    let person;
+   let endGoal;
    for (person in final) {
     if (final[person] >= final.erinFinal  && final[person] >= final.misakaFinal && final[person] >= final.titanFinal && final[person] >= final.leviFinal) {
-      return (person);
+      endGoal = person;
      }
    }
+   console.log(endGoal)
+   return endGoal;
+};
+
+function getFinalResult() {
+  let finalResult = (getResult(STORE[5]));
+  return finalResult;
+}
+
+function generateNextQuestion() {
+  if (countIndex() <= 5) {
+   $('main').html(`<div class='page-instance'>
+   <div class='question-index'>${countIndex()}/5</div>
+   <div class="question-text">${STORE[countIndex() - 1].question}</div>
+   <div class="answers">
+     <form id='answers-form' class='form'> 
+       <input type='radio' id='erin' name='answer' value='e'>
+       <label for="erin">${STORE[countIndex() - 1].answerE}</label><br>
+       <input type="radio" id="misaka" name="answer" value="m">
+       <label for="misaka">${STORE[countIndex() - 1].answerM}</label><br>
+       <input type="radio" id="titan" name="answer" value="t">
+       <label for="titan">${STORE[countIndex() - 1].answerT}</label><br>
+       <input type="radio" id="levi" name="answer" value="l">
+       <label for="levi">${STORE[countIndex() - 1].answerL}</label><br>
+       <button type="submit" id="submit" class='submit-btn btn'>Submit</button>
+     </form>
+   </div>
+ </div>`);
+  } else {
+    console.log(STORE[5])
+    console.log(getFinalResult())
+      if (getFinalResult() === 'erinFinal') {
+    $('main').html(`<div class='page-instance'>
+    <div class='results'>
+      <h2>Congrats! You're most similar to Eren!</h2>
+      <div class="character">
+        <p>You're ready to rush into battle at any moment, but your courage could be your downfall</p>
+      </div>
+      <div class="reset-state">
+        <button id="reset-btn" class="reset-btn btn">Start over!</button>
+      </div>
+
+    </div>
+  
+</div>`);
+     } else if (getFinalResult() === 'misakaFinal') {
+      $('main').html(`<div class='page-instance'>
+      <div class='results'>
+        <h2>Hey! You're most similar to Mikasa!!</h2>
+        <div class="character">
+          <p>You're a lot like Mikasa, you're passionate about your friends, but to others you might seem a little cold. But hey, you're also a badass.</p>
+        </div>
+        <div class="reset-state">
+          <button id="reset-btn" class="reset-btn btn">Start over!</button>
+        </div>
+
+      </div>
+    
+  </div>`);
+  }else if (getFinalResult() === 'titanFinal') {
+    $('main').html(`<div class='page-instance'>
+    <div class='results'>
+      <h2>Well, it looks like you're most similar to a Titan...</h2>
+      <div class="character">
+        <p>We advise you seek medical attention immediately!!!!</p>
+      </div>
+      <div class="reset-state">
+        <button id="reset-btn" class="reset-btn btn">Start over!</button>
+      </div>
+
+    </div>
+  
+</div>`);
   }
-let finalResult = (getResult(STORE[5]));
+  else {
+  $('main').html(`<div class='page-instance'>
+  <div class='results'>
+    <h2>Congrats! You're most similar to Levi</h2>
+    <div class="character">
+      <p>Okay Mr. Badass, you're a better leader than anything else but your harshe edge can be offputting</p>
+    </div>
+    <div class="reset-state">
+      <button id="reset-btn" class="reset-btn btn">Start over!</button>
+    </div>
+
+  </div>
+
+</div>`);
+}
+  }
+}
+
+function main(){
+  generateStart();
+  handlePageTurn();
+  // handleSubmit();
+};
+
+$(main);
+
+

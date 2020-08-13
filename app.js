@@ -69,10 +69,6 @@ $('main').on('click', '.reset-btn', function (event) {
   generateStart();
 });
 
-// $('main').on('submit', '#submit', function (e) {
-//   e.preventDefault();
-//   generateNextQuestion();
-// }); 
 
 
 $('main').on('submit', function (e) {
